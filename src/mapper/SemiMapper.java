@@ -65,7 +65,6 @@ public class SemiMapper extends MapReduceBase implements
 		String k, v;
 		Record r;
 
-		System.out.println(splitName + ":" + inputNameLeft);
 		// left-side table: v k
 		if (splitName.equals(inputNameLeft)) {
 			pos = line.lastIndexOf(separator);
