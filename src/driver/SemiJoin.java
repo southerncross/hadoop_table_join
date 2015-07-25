@@ -56,7 +56,7 @@ public class SemiJoin implements JoinDriver {
 		new SemiJoin().join(args, conf);
 		// delete temporaray direction
 		FileSystem hdfs = new Path(args[0]).getFileSystem(new Configuration());
-		hdfs.delete(conf.tmpPath, true);
+		//hdfs.delete(conf.tmpPath, true);
 	}
 
 	public void join(String[] args, Conf conf) throws IOException {
@@ -68,9 +68,10 @@ public class SemiJoin implements JoinDriver {
 		int bfSize = 0;
 
 		// determine which one is smaller and which one is larger
-		FileSystem hdfs = inLeft.getFileSystem(new Configuration());
-		FileStatus inLeftStatus = hdfs.getFileStatus(inLeft);
-		FileStatus inRightStatus = hdfs.getFileStatus(inRight);
+		FileStatus inLeftStatus = inLeft.getFileSystem(new Configuration())
+				.getFileStatus(inLeft);
+		FileStatus inRightStatus = inRight.getFileSystem(new Configuration())
+				.getFileStatus(inRight);
 		Path inSmall;
 		if (inLeftStatus.getLen() < inRightStatus.getLen()) {
 			inSmall = new Path(inLeft.toString());
@@ -118,7 +119,7 @@ public class SemiJoin implements JoinDriver {
 		JobClient.runJob(semiJob);
 		
 		// delete bloom filter
-		hdfs.delete(bfPath, true);
+		//hdfs.delete(bfPath, true);
 	}
 
 }

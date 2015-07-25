@@ -34,7 +34,6 @@ public class BFReducer extends MapReduceBase implements
 		bf = new BloomFilter(sizeBloomfilter, 6, Hash.JENKINS_HASH);
 	}
 
-	@Override
 	public void reduce(Text key, Iterator<BloomFilter> values,
 			OutputCollector<Text, Text> output, Reporter reporter)
 			throws IOException {

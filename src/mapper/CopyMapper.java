@@ -113,7 +113,6 @@ public class CopyMapper extends MapReduceBase implements
 		}
 	}
 
-	@Override
 	public void map(LongWritable key, Text value,
 			OutputCollector<Text, Text> output, Reporter reporter)
 			throws IOException {

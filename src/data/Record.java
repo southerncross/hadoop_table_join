@@ -40,13 +40,11 @@ public class Record implements Writable {
 		this.flag = flag;
 	}
 
-	@Override
 	public void readFields(DataInput input) throws IOException {
 		this.value = input.readUTF();
 		this.flag = input.readInt();
 	}
 
-	@Override
 	public void write(DataOutput output) throws IOException {
 		output.writeUTF(this.value);
 		output.writeInt(this.flag);

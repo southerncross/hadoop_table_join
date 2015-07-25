@@ -31,7 +31,6 @@ public class NormalMapper extends MapReduceBase implements
 		separator = job.get("mapred.textoutputformat.separator");
 	}
 
-	@Override
 	public void map(LongWritable key, Text value,
 			OutputCollector<Text, Record> output, Reporter reporter)
 			throws IOException {

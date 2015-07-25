@@ -55,17 +55,17 @@ public class SemiMapper extends MapReduceBase implements
 		}
 	}
 
-	@Override
 	public void map(LongWritable key, Text value,
 			OutputCollector<Text, Record> output, Reporter reporter)
 			throws IOException {
 		String splitName = ((FileSplit) reporter.getInputSplit()).getPath()
-				.toString();
+				.toString().substring(5); // remove the prefix "file:"
 		String line = value.toString();
 		int pos;
 		String k, v;
 		Record r;
 
+		System.out.println(splitName + ":" + inputNameLeft);
 		// left-side table: v k
 		if (splitName.equals(inputNameLeft)) {
 			pos = line.lastIndexOf(separator);
@@ -85,7 +85,9 @@ public class SemiMapper extends MapReduceBase implements
 			r.setFlag(1); // "1" means right
 		}
 		// semi-join
-		if (bf.membershipTest(new Key(k.getBytes())))
+		if (bf.membershipTest(new Key(k.getBytes()))) {
+			System.out.println(r.getFlag());
 			output.collect(new Text(k), r);
+		}
 	}
 }

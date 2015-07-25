@@ -35,7 +35,6 @@ public class NormalReducer extends MapReduceBase implements
 				true);
 	}
 
-	@Override
 	public void reduce(Text key, Iterator<Record> values,
 			OutputCollector<Text, Text> output, Reporter reporter)
 			throws IOException {

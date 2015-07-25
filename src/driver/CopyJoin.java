@@ -61,9 +61,10 @@ public class CopyJoin implements JoinDriver {
 		Path out = new Path(args[2]);
 
 		// determine which one is smaller and which one is larger
-		FileSystem hdfs = inLeft.getFileSystem(new Configuration());
-		FileStatus inLeftStatus = hdfs.getFileStatus(inLeft);
-		FileStatus inRightStatus = hdfs.getFileStatus(inRight);
+		FileStatus inLeftStatus = inLeft.getFileSystem(new Configuration())
+				.getFileStatus(inLeft);
+		FileStatus inRightStatus = inRight.getFileSystem(new Configuration())
+				.getFileStatus(inRight);
 		Path inSmall, inLarge;
 		if (inLeftStatus.getLen() < inRightStatus.getLen()) {
 			inSmall = new Path(inLeft.toString());

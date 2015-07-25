@@ -65,7 +65,7 @@ public class CostModel {
 		try {
 			in = hdfs.open(p);
 			for (int i = 0; i < numBlockSampling; i++) {
-				long pos = i * numBlockSampling * table.sizeBlock;
+				long pos = i * table.sizeBlock;
 				in.read(pos, buffer, 0, bsize);
 				String content = new String(buffer, "UTF-8");
 				String[] lines = content.split("\n");

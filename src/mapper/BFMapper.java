@@ -38,7 +38,6 @@ public class BFMapper extends MapReduceBase implements
 		oc = null;
 	}
 
-	@Override
 	public void map(LongWritable key, Text value,
 			OutputCollector<Text, BloomFilter> output, Reporter reporter)
 			throws IOException {

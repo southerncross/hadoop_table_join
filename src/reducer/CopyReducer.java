@@ -30,7 +30,6 @@ public class CopyReducer extends MapReduceBase implements
 	}
 
 	// write output file back to HDFS
-	@Override
 	public void reduce(Text key, Iterator<Text> values,
 			OutputCollector<Text, Text> output, Reporter reporter)
 			throws IOException {

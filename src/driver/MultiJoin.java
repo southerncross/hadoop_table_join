@@ -66,7 +66,7 @@ public class MultiJoin implements JoinDriver {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			hdfs.delete(conf.tmpPath, true);
+			//hdfs.delete(conf.tmpPath, true);
 		}
 	}
 
