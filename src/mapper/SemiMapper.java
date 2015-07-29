@@ -85,7 +85,6 @@ public class SemiMapper extends MapReduceBase implements
 		}
 		// semi-join
 		if (bf.membershipTest(new Key(k.getBytes()))) {
-			System.out.println(r.getFlag());
 			output.collect(new Text(k), r);
 		}
 	}
